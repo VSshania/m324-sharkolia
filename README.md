@@ -5,7 +5,7 @@ Eine Web-Applikation mit einem einfachen Backend (Ohne DB), dass ein persönlich
 Die Antworten von dem User bestimmen die Auswertung bzw. den Character. Die Character sind als Pixelcharacter dargestellt.
 
 
-# BBZBL Modul 324: Web-Applikation Template
+## BBZBL Modul 324: Web-Applikation Template
 
 Dieses Template dient als Vorlage zum Starten eures Projekts.
 
