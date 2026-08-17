@@ -1,4 +1,11 @@
-# BBZBL Modul 324: Web-Applikation Template
+# Projektbeschreibung - Personify
+
+Eine Web-Applikation mit einem einfachen Backend (Ohne DB), dass ein Persönlichkeitstest anbietet und durch die Resultate dem User einen individualisierten Charakter zuweist.
+
+Die Antworten von dem User bestimmen die Auswertung bzw. den Charakter. Die Charakter sind als Pixelcharacter dargestellt.
+
+
+## BBZBL Modul 324: Web-Applikation Template
 
 Dieses Template dient als Vorlage zum Starten eures Projekts.
 
