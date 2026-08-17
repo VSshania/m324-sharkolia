@@ -26,3 +26,4 @@ soll ermöglichen, dass ein Gesamtüberblick von Anfang an existiert.
 >
 > Der Ordner `docs` wird von Anfang an benötigt und ist direkt im starter
 > vorgegeben.
+> dies ist ein test
