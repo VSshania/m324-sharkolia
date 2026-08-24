@@ -1,9 +1,6 @@
-# Projektbeschreibung - Personify
+# Project description - Personify
 
-Eine Web-Applikation mit einem einfachen Backend (Ohne DB), dass ein Persönlichkeitstest anbietet und durch die Resultate dem User einen individualisierten Charakter zuweist.
-
-Die Antworten von dem User bestimmen die Auswertung bzw. den Charakter. Die Charakter sind als Pixelcharacter dargestellt.
-
+Personify is a stateless web application (no database, no accounts) that gives users a short personality test and assigns them a pixel-art character based on their results. Answers are scored across multiple traits and the resulting profile maps to a self-made character with a name and a short description. The goal is a fast and funny experience for everyone. 
 
 ## BBZBL Modul 324: Web-Applikation Template
 
