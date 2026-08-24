@@ -3,7 +3,9 @@ name = "backend"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Marko Jevtic",email = "mr.marki2006@gmail.com"}
+    {name = "Marko Jevtic",email = "marko.jevtic@bbzbl-it.ch"},
+    {name = "Shania Street", email = "shania.street@bbzbl-it.ch"},
+    {name = "Célia Dominé", email = "celia.domine@bbzbl-it.ch"}
 ]
 readme = "README.md"
 requires-python = ">=3.14"
