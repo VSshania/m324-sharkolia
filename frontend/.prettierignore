@@ -1,0 +1,12 @@
+.classpath
+.idea/
+.project
+.vscode/*
+/.angular
+/.nx
+/bazel-out
+/coverage
+/dist
+/out-tsc
+/tmp
+node_modules
