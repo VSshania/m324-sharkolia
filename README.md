@@ -30,6 +30,10 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng format` to run the formatting script using prettier.
 
+### Linting
+
+Run `ng run lint` to run the linter.
+
 ## Backend
 
 We're using python version 3.14.7 and poetry version 2.4.1.
@@ -45,6 +49,10 @@ To start the api, run: `poetry run uvicorn main:app --reload`
 ### Formatting
 
 To format the files, run: `poetry run ruff format .`
+
+### Linting
+
+To lint the files, run: `poetry run ruff check .`
 
 ## BBZBL Modul 324: Web-Applikation Template
 
