@@ -50,6 +50,10 @@ To start the api, run: `poetry run uvicorn main:app --reload`
 
 To format the files, run: `poetry run ruff format .`
 
+### Linting
+
+To lint the files, run: `poetry run ruff check .`
+
 ## BBZBL Modul 324: Web-Applikation Template
 
 Dieses Template dient als Vorlage zum Starten eures Projekts.
