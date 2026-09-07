@@ -9,6 +9,8 @@
     "test": "ng test --browsers=chromiumHeadless",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
+    "e2e:ci": "wireit",
+    "e2e:server": "wireit",
     "lint": "ng lint",
     "lint:ci": "ng lint --output-file eslint_report.json --format json"
   },
