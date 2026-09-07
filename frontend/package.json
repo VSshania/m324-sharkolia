@@ -6,10 +6,27 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --browsers=chromiumHeadless",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
     "lint": "ng lint",
     "lint:ci": "ng lint --output-file eslint_report.json --format json"
-
+  },
+  "wireit": {
+    "e2e:ci": {
+      "command": "playwright test",
+      "dependencies": [
+        "e2e:server"
+      ]
+    },
+    "e2e:server": {
+      "command": "ng serve",
+      "service": {
+        "readyWhen": {
+          "lineMatches": ".*localhost*"
+        }
+      }
+    }
   },
   "private": true,
   "packageManager": "npm@10.9.8",
@@ -28,6 +45,9 @@
     "@angular/cli": "^22.1.7",
     "@angular/compiler-cli": "^22.1.0",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.4.1",
+    "@vitest/browser-playwright": "^4.1.11",
     "angular-eslint": "22.3.0",
     "eslint": "^10.9.1",
     "eslint-config-prettier": "^10.1.8",
@@ -36,6 +56,7 @@
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",
     "typescript-eslint": "8.68.0",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "wireit": "^0.14.13"
   }
 }
