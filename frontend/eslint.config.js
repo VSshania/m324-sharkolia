@@ -3,11 +3,12 @@ const eslint = require('@eslint/js');
 const { defineConfig } = require('eslint/config');
 const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
-const eslintConfigPrettier = require('eslint-config-prettier');
+const eslintConfigPrettier = require("eslint-config-prettier");
+
 
 module.exports = defineConfig([
   {
-    ignores: ['.angular/**', '.nx/**', 'coverage/**', 'dist/**'],
+    ignores: [".angular/**", ".nx/**", "coverage/**", "dist/**"],
     files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
