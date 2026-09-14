@@ -8,7 +8,7 @@ This section covers setting up, running, and formatting both the frontend and ba
 
 ## Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 22.1.7.
 
 ### Development server
 
