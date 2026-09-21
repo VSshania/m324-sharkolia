@@ -1,0 +1,38 @@
+# Stage1: Builder to install dependencies.
+FROM python:3.14-slim AS builder
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+# Install build dependencies if needed (e.g., for compiled packages)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Stage2: Final image
+FROM python:3.14-slim
+
+LABEL service="myapp"
+
+WORKDIR /app
+
+#avoids writing .pyc files to disc (makes image smaller) and ensures logs are sent straight to terminal (PYTHONUNBUFFERED)
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH="/opt/venv/bin:$PATH"
+
+COPY --from=builder /opt/venv /opt/venv
+
+COPY . /app
+
+EXPOSE 80/tcp
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
