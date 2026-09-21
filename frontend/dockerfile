@@ -8,8 +8,6 @@ RUN npm ci && npm run build
 
 FROM nginx:1.29-bookworm
 
-LABEL service="frontend"
-
 LABEL service="personify-ui"
 
 EXPOSE 80
