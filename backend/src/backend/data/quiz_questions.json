@@ -1,0 +1,133 @@
+{
+  "characters": ["magician", "jester", "hunter", "princess", "ogre", "knight"],
+  "genderQuestion": {
+    "id": "gender",
+    "question": "What gender do you identify as?",
+    "options": [
+      { "id": "female", "label": "Female" },
+      { "id": "male", "label": "Male" }
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "question": "It's Saturday and you have no plans. What do you do?",
+      "options": [
+        { "id": "a", "label": "Fall into a research rabbit hole over a random topic", "scores": { "magician": 2, "jester": 1 } },
+        { "id": "b", "label": "Go somewhere far and quiet, alone and chill", "scores": { "hunter": 2, "magician": 1 } },
+        { "id": "c", "label": "Gather people and hang out", "scores": { "jester": 2, "princess": 1 } },
+        { "id": "d", "label": "Eat good food and watch TV", "scores": { "ogre": 2, "knight": 1 } }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "A friend asks your honest opinion and their work isn't good.",
+      "options": [
+        { "id": "a", "label": "Say it straight away, they'll survive", "scores": { "ogre": 2, "knight": 1 } },
+        { "id": "b", "label": "Compliment what's nice about it", "scores": { "princess": 2, "magician": 1 } },
+        { "id": "c", "label": "Joke about it until the point lands", "scores": { "jester": 2, "ogre": 1 } },
+        { "id": "d", "label": "Give specific fixes, offer to help", "scores": { "knight": 2, "hunter": 1 } }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "What is your goal in life?",
+      "options": [
+        { "id": "a", "label": "Understanding how things really work", "scores": { "magician": 2, "hunter": 1 } },
+        { "id": "b", "label": "Being good at something only few people can do", "scores": { "hunter": 2, "magician": 1 } },
+        { "id": "c", "label": "Protecting the people who rely on me", "scores": { "knight": 2, "princess": 1 } },
+        { "id": "d", "label": "Being left alone to live my way", "scores": { "ogre": 2, "jester": 1 } }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Group project and nobody's leading. What do you do?",
+      "options": [
+        { "id": "a", "label": "Quietly build the plan and hand it over", "scores": { "magician": 2, "knight": 1 } },
+        { "id": "b", "label": "Step up and take charge", "scores": { "knight": 2, "ogre": 1 } },
+        { "id": "c", "label": "Keep the morale up and motivate everybody", "scores": { "princess": 2, "jester": 1 } },
+        { "id": "d", "label": "Do my part well, ignore the rest", "scores": { "hunter": 2, "ogre": 1 } }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "What do you do when you have to follow a rule that you don't agree with?",
+      "options": [
+        { "id": "a", "label": "Follow it anyway, rules hold things together", "scores": { "knight": 2, "princess": 1 } },
+        { "id": "b", "label": "Just ignore it", "scores": { "hunter": 2, "magician": 1 } },
+        { "id": "c", "label": "Make fun of it", "scores": { "jester": 2, "ogre": 1 } },
+        { "id": "d", "label": "Say out loud that you think it's stupid", "scores": { "ogre": 2, "jester": 1 } }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "You see two people fight. What do you do?",
+      "options": [
+        { "id": "a", "label": "Fight them too", "scores": { "ogre": 2, "knight": 1 } },
+        { "id": "b", "label": "Try to make them talk", "scores": { "princess": 2, "jester": 1 } },
+        { "id": "c", "label": "Go get help", "scores": { "magician": 2, "hunter": 1 } },
+        { "id": "d", "label": "Step away from it entirely", "scores": { "hunter": 2, "princess": 1 } }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Your biggest weakness.",
+      "options": [
+        { "id": "a", "label": "Secretive, bad communication", "scores": { "magician": 2, "hunter": 1 } },
+        { "id": "b", "label": "Never serious when it matters", "scores": { "jester": 2, "ogre": 1 } },
+        { "id": "c", "label": "Needs things a certain way", "scores": { "princess": 2, "knight": 1 } },
+        { "id": "d", "label": "Rigid, judgemental", "scores": { "knight": 2, "ogre": 1 } }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "What's your favorite compliment to receive?",
+      "options": [
+        { "id": "a", "label": "\"Nothing gets past you.\"", "scores": { "magician": 2, "hunter": 1 } },
+        { "id": "b", "label": "\"People feel good around you.\"", "scores": { "princess": 2, "jester": 1 } },
+        { "id": "c", "label": "\"You're never boring.\"", "scores": { "jester": 2, "ogre": 1 } },
+        { "id": "d", "label": "\"You do what you say you'll do.\"", "scores": { "knight": 2, "hunter": 1 } }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "You're in a room full of strangers. What do you do?",
+      "options": [
+        { "id": "a", "label": "Observe the people and wait in the corner", "scores": { "magician": 2, "hunter": 1 } },
+        { "id": "b", "label": "Find one person and start deep-talking", "scores": { "hunter": 2, "princess": 1 } },
+        { "id": "c", "label": "Go around and make jokes", "scores": { "jester": 2, "ogre": 1 } },
+        { "id": "d", "label": "Make friends with everyone", "scores": { "princess": 2, "knight": 1 } }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Your space is…",
+      "options": [
+        { "id": "a", "label": "Chaos of books and half-finished things", "scores": { "magician": 2, "jester": 1 } },
+        { "id": "b", "label": "Sparse and functional", "scores": { "hunter": 2, "knight": 1 } },
+        { "id": "c", "label": "Aesthetic, beautiful, colorful", "scores": { "princess": 2, "magician": 1 } },
+        { "id": "d", "label": "Comfortable, honestly a bit of a mess", "scores": { "ogre": 2, "jester": 1 } }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Someone mistreats a person you care about. What do you do?",
+      "options": [
+        { "id": "a", "label": "Hit them", "scores": { "ogre": 2, "knight": 1 } },
+        { "id": "b", "label": "Confront it properly, talk about it", "scores": { "knight": 2, "ogre": 1 } },
+        { "id": "c", "label": "Comfort my person first, deal with the other later", "scores": { "princess": 2, "jester": 1 } },
+        { "id": "d", "label": "Remember it, get revenge later :)", "scores": { "magician": 2, "hunter": 1 } }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "You have to make a big decision. What do you do?",
+      "options": [
+        { "id": "a", "label": "Research it, then choose", "scores": { "magician": 2, "knight": 1 } },
+        { "id": "b", "label": "Gut call, then commit and adapt", "scores": { "hunter": 2, "ogre": 1 } },
+        { "id": "c", "label": "Talk it through with people I trust", "scores": { "princess": 2, "jester": 1 } },
+        { "id": "d", "label": "Whatever feels right in the moment", "scores": { "jester": 2, "ogre": 1 } }
+      ]
+    }
+  ]
+}
