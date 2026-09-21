@@ -21,7 +21,7 @@
     },
     {
       "id": 2,
-      "question": "A friend asks your honest opinion and their work isn't good.",
+      "question": "A friend asks your honest opinion and their work isn't good. What do you do?",
       "options": [
         { "id": "a", "label": "Say it straight away, they'll survive", "scores": { "ogre": 2, "knight": 1 } },
         { "id": "b", "label": "Compliment what's nice about it", "scores": { "princess": 2, "magician": 1 } },
@@ -41,7 +41,7 @@
     },
     {
       "id": 4,
-      "question": "Group project and nobody's leading. What do you do?",
+      "question": "You're in a group project and nobody's leading. What do you do?",
       "options": [
         { "id": "a", "label": "Quietly build the plan and hand it over", "scores": { "magician": 2, "knight": 1 } },
         { "id": "b", "label": "Step up and take charge", "scores": { "knight": 2, "ogre": 1 } },
@@ -71,7 +71,7 @@
     },
     {
       "id": 7,
-      "question": "Your biggest weakness.",
+      "question": "What is your biggest weakness?",
       "options": [
         { "id": "a", "label": "Secretive, bad communication", "scores": { "magician": 2, "hunter": 1 } },
         { "id": "b", "label": "Never serious when it matters", "scores": { "jester": 2, "ogre": 1 } },
