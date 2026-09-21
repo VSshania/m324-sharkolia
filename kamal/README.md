@@ -40,6 +40,30 @@ Der Rest wird durch `Kamal` automatisiert. Es könnte z.B. Auch einfach eine DB 
 >
 > Nach einem Setup kann auch `kamal deploy` verwendet werden.
 
+## Mehrere Services (Frontend + Backend)
+
+Frontend und Backend sind zwei unabhängige Kamal-Apps, die auf derselben
+EC2-Instanz laufen: dieser Ordner (`kamal/`) fürs Frontend (`personify-ui`),
+[`../kamal-backend/`](../kamal-backend) fürs Backend (`personify-api`) —
+eine 1:1-Kopie mit eigenem `config/deploy.yml`.
+
+Beide Apps landen auf demselben Server und teilen sich denselben
+`kamal-proxy`, der beim ersten Deploy automatisch gebootet wird. Da wir
+keine eigene Domain haben, wird das Backend nicht über einen eigenen
+Hostnamen, sondern über einen Pfad-Präfix erreichbar gemacht:
+`http://<server-ip>/api/...` (siehe `proxy.path_prefix` in
+[`kamal-backend/config/deploy.yml`](../kamal-backend/config/deploy.yml)).
+
+Deployt wird jede App für sich, aus ihrem eigenen Ordner:
+
+```bash
+cd kamal && bundle exec kamal deploy --skip-push --version=$VERSION
+cd kamal-backend && bundle exec kamal deploy --skip-push --version=$VERSION
+```
+
+Die CI-Pipeline ([deploy.yml](../.github/workflows/deploy.yml)) macht das
+bei jedem Release automatisch, in dieser Reihenfolge.
+
 ## Wieso Ruby?
 
 `Kamal` ist von den Machern von RubyOnRails. Ist jedoch nicht darauf isoliert, wird aber vor allem in der Ruby Welt eingesetzt.
