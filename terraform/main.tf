@@ -143,3 +143,18 @@ resource "aws_ecr_repository" "myecr" {
     App = "myapp"
   }
 }
+
+resource "aws_ecr_repository" "myecr_backend" {
+  name                 = "m324/myapp-backend"
+  image_tag_mutability = "MUTABLE"
+  force_delete         = true
+  encryption_configuration {
+    encryption_type = "KMS"
+  }
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+  tags = {
+    App = "myapp"
+  }
+}

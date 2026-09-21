@@ -11,7 +11,6 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  DOCKER_IMAGE_NAME: m324/myapp
 
 permissions:
   contents: read
@@ -49,10 +48,18 @@ jobs:
         run: |
           echo "SERVER_IP=$(sh scripts/get_public_ip.sh ubuntu2404)" >> $GITHUB_ENV
 
-      - name: Set up Ruby for Kamal
+      - name: Set up Ruby for Kamal (frontend)
         uses: ruby/setup-ruby@v1
         env:
           BUNDLE_GEMFILE: ./kamal/Gemfile
+        with:
+          ruby-version: 3.4.2
+          bundler-cache: true
+
+      - name: Set up Ruby for Kamal (backend)
+        uses: ruby/setup-ruby@v1
+        env:
+          BUNDLE_GEMFILE: ./kamal-backend/Gemfile
         with:
           ruby-version: 3.4.2
           bundler-cache: true
@@ -67,36 +74,73 @@ jobs:
         with:
           driver-opts: network=host
 
-      # Definiert die docker image name und tags
+      # Definiert die docker image name und tags fürs Frontend
       # Falls es sich um ein Tag handelt wird der Tag verwendet, sonst der git-commit hash
-      - name: Docker meta
-        id: meta
+      - name: Docker meta (frontend)
+        id: meta-frontend
         uses: docker/metadata-action@v6
         with:
           images: |
-            ${{ steps.login-ecr.outputs.registry }}/${{ env.DOCKER_IMAGE_NAME }}
+            ${{ steps.login-ecr.outputs.registry }}/m324/myapp
           tags: |
             type=semver,pattern={{version}},event=tag
             type=sha,event=branch
 
       # Entspricht `docker build .` und `docker push`, nur konfortabler und schneller mit cache
-      - name: Build and push application image to regisrty
+      - name: Build and push frontend image to registry
         uses: docker/build-push-action@v7
         with:
           context: ./frontend
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          tags: ${{ steps.meta-frontend.outputs.tags }}
+          cache-from: type=gha,scope=frontend
+          cache-to: type=gha,mode=max,scope=frontend
 
-      # Deployed das erstellte Image nach AWS
-      - name: Kamal deploy image
+      # Deployed das erstellte Frontend-Image nach AWS
+      - name: Kamal deploy frontend
         working-directory: kamal
         env:
           KAMAL_SERVER_IP: ${{ env.SERVER_IP }}
           KAMAL_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           KAMAL_REGISTRY_PASSWORD: ${{ steps.login-ecr.outputs[format('docker_password_{0}_dkr_ecr_us_east_1_amazonaws_com', secrets.AWS_ACCOUNT_ID)] }}
-          VERSION: ${{ steps.meta.outputs.version }}
+          VERSION: ${{ steps.meta-frontend.outputs.version }}
         run: |
           bundle exec kamal deploy --skip-push --version=$VERSION
-          echo "Visit me on [http://$KAMAL_SERVER_IP](http://$KAMAL_SERVER_IP) 🚀" >> $GITHUB_STEP_SUMMARY
+
+      # Definiert die docker image name und tags fürs Backend
+      - name: Docker meta (backend)
+        id: meta-backend
+        uses: docker/metadata-action@v6
+        with:
+          images: |
+            ${{ steps.login-ecr.outputs.registry }}/m324/myapp-backend
+          tags: |
+            type=semver,pattern={{version}},event=tag
+            type=sha,event=branch
+
+      - name: Build and push backend image to registry
+        uses: docker/build-push-action@v7
+        with:
+          context: ./backend
+          push: true
+          tags: ${{ steps.meta-backend.outputs.tags }}
+          cache-from: type=gha,scope=backend
+          cache-to: type=gha,mode=max,scope=backend
+
+      # Deployed das erstellte Backend-Image nach AWS
+      # läuft auf demselben Server wie das Frontend, hinter demselben
+      # kamal-proxy, erreichbar unter /api (siehe kamal-backend/config/deploy.yml)
+      - name: Kamal deploy backend
+        working-directory: kamal-backend
+        env:
+          KAMAL_SERVER_IP: ${{ env.SERVER_IP }}
+          KAMAL_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          KAMAL_REGISTRY_PASSWORD: ${{ steps.login-ecr.outputs[format('docker_password_{0}_dkr_ecr_us_east_1_amazonaws_com', secrets.AWS_ACCOUNT_ID)] }}
+          VERSION: ${{ steps.meta-backend.outputs.version }}
+        run: |
+          bundle exec kamal deploy --skip-push --version=$VERSION
+
+      - name: Summary
+        run: |
+          echo "Visit me on [http://$SERVER_IP](http://$SERVER_IP) 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "API on [http://$SERVER_IP/api](http://$SERVER_IP/api) 🚀" >> $GITHUB_STEP_SUMMARY
