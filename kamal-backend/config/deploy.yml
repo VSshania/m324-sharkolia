@@ -29,6 +29,7 @@ ssh:
   # keys: ["../local/ssh/id_rsa.pem"]
 
 proxy:
+  host: <%= ENV.fetch('KAMAL_SERVER_IP') %>
   app_port: 80
   # INFO: Läuft auf demselben Server wie das Frontend, hinter demselben
   #       kamal-proxy. Da wir keine eigene Domain haben, wird die API über

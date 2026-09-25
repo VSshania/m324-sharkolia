@@ -29,6 +29,7 @@ ssh:
   # keys: ["../local/ssh/id_rsa.pem"]
 
 proxy:
+  host: <%= ENV.fetch('KAMAL_SERVER_IP') %>
   app_port: 80
   healthcheck:
     path: /up
