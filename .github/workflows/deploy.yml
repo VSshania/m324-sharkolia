@@ -97,6 +97,7 @@ jobs:
           cache-to: type=gha,mode=max,scope=frontend
 
       # Setzt den Proxy auf dem Server zurück, um alte/blockierte Routen zu löschen
+      # muss auskommentiert werden, wenn es einmal funktioniert hat...
       - name: Reboot Kamal Proxy
         working-directory: kamal
         env:
