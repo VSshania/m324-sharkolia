@@ -96,17 +96,6 @@ jobs:
           cache-from: type=gha,scope=frontend
           cache-to: type=gha,mode=max,scope=frontend
 
-      # Setzt den Proxy auf dem Server zurück, um alte/blockierte Routen zu löschen
-      # muss auskommentiert werden, wenn es einmal funktioniert hat...
-      - name: Reboot Kamal Proxy
-        working-directory: kamal
-        env:
-          KAMAL_SERVER_IP: ${{ env.SERVER_IP }}
-          KAMAL_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          KAMAL_REGISTRY_PASSWORD: ${{ steps.login-ecr.outputs[format('docker_password_{0}_dkr_ecr_us_east_1_amazonaws_com', secrets.AWS_ACCOUNT_ID)] }}
-        run: |
-          bundle exec kamal proxy reboot -y
-
       # Deployed das erstellte Frontend-Image nach AWS
       - name: Kamal deploy frontend
         working-directory: kamal
