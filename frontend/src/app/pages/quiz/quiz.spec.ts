@@ -5,6 +5,8 @@ import { provideRouter } from '@angular/router';
 import { QuizData } from '../../models/quiz';
 import { Quiz } from './quiz';
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const QUIZ_DATA: QuizData = {
   characters: ['magician', 'ogre'],
   genderQuestion: {
@@ -54,17 +56,20 @@ describe('Quiz', () => {
     expect(component).toBeTruthy();
   });
 
-  it('shows the gender question first, then the character questions', () => {
+  it('shows the gender question first, then the character questions', async () => {
     expect(component.step()).toBe('gender');
 
     component.selectGender(QUIZ_DATA.genderQuestion.options[1]);
+    await wait(300);
     expect(component.step()).toBe('question');
     expect(component.currentQuestion?.question).toBe('Question 1?');
   });
 
-  it('picks the character with the highest score once all questions are answered', () => {
+  it('picks the character with the highest score once all questions are answered', async () => {
     component.selectGender(QUIZ_DATA.genderQuestion.options[1]);
+    await wait(300);
     component.selectAnswer(QUIZ_DATA.questions[0].options[0]);
+    await wait(300);
 
     expect(component.step()).toBe('result');
     expect(component.resultCharacter()).toBe('magician');

@@ -6,6 +6,11 @@
   padding: 3rem 2rem;
   background: #fbeaf3;
   box-sizing: border-box;
+  transition: opacity 0.25s ease;
+}
+
+.quiz.fade {
+  opacity: 0;
 }
 
 .status {
@@ -31,6 +36,7 @@
 
 h2 {
   margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 2rem;
   font-weight: 800;
 }
@@ -44,6 +50,7 @@ h2 {
 
 .option {
   padding: 1rem 1.5rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   background: #fff;

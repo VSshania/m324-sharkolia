@@ -1,4 +1,4 @@
-<main class="quiz">
+<main class="quiz" [class.fade]="transitioning()">
   @if (step() === 'loading') {
     <p class="status">Loading questions…</p>
   }

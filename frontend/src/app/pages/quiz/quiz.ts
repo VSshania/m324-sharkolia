@@ -9,6 +9,8 @@ const CHARACTER_IMAGES: Record<string, Record<string, string>> = {
   magician: { female: 'wizard-f.png', male: 'wizard-m.png' },
 };
 
+const TRANSITION_MS = 250;
+
 @Component({
   imports: [RouterLink],
   selector: 'app-quiz',
@@ -22,6 +24,7 @@ export class Quiz implements OnInit {
   quizData = signal<QuizData | null>(null);
   currentQuestionIndex = signal(0);
   resultCharacter = signal<string | null>(null);
+  transitioning = signal(false);
 
   private gender: string | null = null;
   private scores: Record<string, number> = {};
@@ -53,21 +56,37 @@ export class Quiz implements OnInit {
   }
 
   selectGender(option: QuizOption): void {
+    if (this.transitioning()) {
+      return;
+    }
     this.gender = option.id;
-    this.step.set('question');
+    this.transitionTo(() => this.step.set('question'));
   }
 
   selectAnswer(option: QuizOption): void {
+    if (this.transitioning()) {
+      return;
+    }
     for (const [character, points] of Object.entries(option.scores ?? {})) {
       this.scores[character] = (this.scores[character] ?? 0) + points;
     }
 
-    if (this.currentQuestionIndex() + 1 < this.totalQuestions) {
-      this.currentQuestionIndex.update((index) => index + 1);
-    } else {
-      this.resultCharacter.set(this.computeResultCharacter());
-      this.step.set('result');
-    }
+    this.transitionTo(() => {
+      if (this.currentQuestionIndex() + 1 < this.totalQuestions) {
+        this.currentQuestionIndex.update((index) => index + 1);
+      } else {
+        this.resultCharacter.set(this.computeResultCharacter());
+        this.step.set('result');
+      }
+    });
+  }
+
+  private transitionTo(applyChange: () => void): void {
+    this.transitioning.set(true);
+    setTimeout(() => {
+      applyChange();
+      this.transitioning.set(false);
+    }, TRANSITION_MS);
   }
 
   resultImage(): string | null {
