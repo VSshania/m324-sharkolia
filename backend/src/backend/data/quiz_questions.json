@@ -104,9 +104,9 @@
       "question": "Your space is…",
       "options": [
         { "id": "a", "label": "veryyy chaotic", "scores": { "magician": 2, "jester": 1 } },
-        { "id": "b", "label": "Sparse and functional", "scores": { "hunter": 2, "knight": 1 } },
+        { "id": "b", "label": "sparse and functional", "scores": { "hunter": 2, "knight": 1 } },
         { "id": "c", "label": "like on Pinterest", "scores": { "princess": 2, "magician": 1 } },
-        { "id": "d", "label": "Comfortable, honestly a bit of a mess", "scores": { "ogre": 2, "jester": 1 } }
+        { "id": "d", "label": "comfortable, honestly a bit of a mess", "scores": { "ogre": 2, "jester": 1 } }
       ]
     },
     {
