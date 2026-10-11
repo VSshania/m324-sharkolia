@@ -55,6 +55,10 @@ export class Quiz implements OnInit {
     return this.quizData()?.questions.length ?? 0;
   }
 
+  get progressPercent(): number {
+    return ((this.currentQuestionIndex() + 1) / this.totalQuestions) * 100;
+  }
+
   selectGender(option: QuizOption): void {
     if (this.transitioning()) {
       return;

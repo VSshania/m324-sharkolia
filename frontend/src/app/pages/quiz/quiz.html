@@ -25,7 +25,12 @@
 
   @if (step() === 'question' && currentQuestion; as question) {
     <section class="card">
-      <p class="progress">Question {{ currentQuestionIndex() + 1 }} of {{ totalQuestions }}</p>
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-bar-fill" [style.width.%]="progressPercent"></div>
+        </div>
+        <p class="progress">Question {{ currentQuestionIndex() + 1 }} of {{ totalQuestions }}</p>
+      </div>
       <h2>{{ question.question }}</h2>
       <div class="options">
         @for (option of question.options; track option.id) {
