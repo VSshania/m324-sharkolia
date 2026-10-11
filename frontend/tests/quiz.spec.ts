@@ -17,9 +17,8 @@ test('taking the quiz leads to a result screen with a character name', async ({ 
   const option = page.locator('.options .option').first();
   const result = page.locator('.character-name');
 
-  // Answer the gender question, then every character question, until the
-  // result screen appears. Each click triggers the quiz's ~0.5s fade
-  // transition before the next question (or result) renders.
+  /* Answer the gender question, then every character question, until the result screen appears.
+  Each click triggers the quiz's ~0.5s fade transition before the next question (or result) renders. */
   for (let answered = 0; answered < 20 && (await result.count()) === 0; answered++) {
     await option.click();
     await page.waitForTimeout(350);

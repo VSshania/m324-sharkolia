@@ -91,7 +91,7 @@
     },
     {
       "id": 9,
-      "question": "You're in a room full of strangers. What do you do?",
+      "question": "You're at a party full of strangers. What do you do?",
       "options": [
         { "id": "a", "label": "Observe the people and wait in the corner", "scores": { "magician": 2, "hunter": 1 } },
         { "id": "b", "label": "Find one person and nerd out together", "scores": { "hunter": 2, "princess": 1 } },
