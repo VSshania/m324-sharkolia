@@ -27,7 +27,8 @@ WORKDIR /app
 #avoids writing .pyc files to disc (makes image smaller) and ensures logs are sent straight to terminal (PYTHONUNBUFFERED)
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PATH="/opt/venv/bin:$PATH"
+    PATH="/opt/venv/bin:$PATH" \
+    PYTHONPATH="/app/src"
 
 COPY --from=builder /opt/venv /opt/venv
 
