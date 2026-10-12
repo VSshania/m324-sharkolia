@@ -7,6 +7,7 @@ type Step = 'loading' | 'error' | 'gender' | 'question' | 'result';
 
 const CHARACTER_IMAGES: Record<string, Record<string, string>> = {
   magician: { female: 'wizard-f.png', male: 'wizard-m.png' },
+  ogre: { female: 'ogre-f.png', male: 'ogre-m.png' },
 };
 
 const TRANSITION_MS = 250;
