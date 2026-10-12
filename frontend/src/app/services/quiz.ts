@@ -8,6 +8,6 @@ export class QuizService {
   private http = inject(HttpClient);
 
   getQuiz(): Observable<QuizData> {
-    return this.http.get<QuizData>('/questions');
+    return this.http.get<QuizData>('/api/questions');
   }
 }

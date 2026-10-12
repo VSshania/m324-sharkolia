@@ -1,6 +1,9 @@
 {
-  "/questions": {
+  "/api": {
     "target": "http://localhost:8000",
-    "secure": false
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    }
   }
 }

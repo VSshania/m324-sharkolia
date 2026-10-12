@@ -45,7 +45,7 @@ describe('Quiz', () => {
     httpMock = TestBed.inject(HttpTestingController);
     fixture.detectChanges();
 
-    httpMock.expectOne('/questions').flush(QUIZ_DATA);
+    httpMock.expectOne('/api/questions').flush(QUIZ_DATA);
   });
 
   afterEach(() => {
