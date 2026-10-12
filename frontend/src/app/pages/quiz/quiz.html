@@ -1,0 +1,58 @@
+<main class="quiz" [class.fade]="transitioning()">
+  @if (step() === 'loading') {
+    <p class="status">Loading questions…</p>
+  }
+
+  @if (step() === 'error') {
+    <div class="status">
+      <p>Something went wrong while loading the quiz.</p>
+      <button type="button" class="primary-button" (click)="loadQuiz()">Try again</button>
+    </div>
+  }
+
+  @if (step() === 'gender' && quizData(); as data) {
+    <section class="card">
+      <h2>{{ data.genderQuestion.question }}</h2>
+      <div class="options">
+        @for (option of data.genderQuestion.options; track option.id) {
+          <button type="button" class="option" (click)="selectGender(option)">
+            {{ option.label }}
+          </button>
+        }
+      </div>
+    </section>
+  }
+
+  @if (step() === 'question' && currentQuestion; as question) {
+    <section class="card">
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-bar-fill" [style.width.%]="progressPercent"></div>
+        </div>
+        <p class="progress">Question {{ currentQuestionIndex() + 1 }} of {{ totalQuestions }}</p>
+      </div>
+      <h2>{{ question.question }}</h2>
+      <div class="options">
+        @for (option of question.options; track option.id) {
+          <button type="button" class="option" (click)="selectAnswer(option)">
+            {{ option.label }}
+          </button>
+        }
+      </div>
+    </section>
+  }
+
+  @if (step() === 'result') {
+    <section class="card result">
+      <p class="subtitle">You are most like…</p>
+      @if (resultImage(); as image) {
+        <img class="result-image" [src]="image" alt="Your matching character" />
+      }
+      <h2 class="character-name">{{ resultCharacter() }}</h2>
+      <div class="result-actions">
+        <button type="button" class="primary-button" (click)="restart()">Retake Quiz</button>
+        <a routerLink="/" class="secondary-link">Back to home</a>
+      </div>
+    </section>
+  }
+</main>

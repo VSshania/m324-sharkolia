@@ -12,6 +12,5 @@ class QuestionService:
 
     @lru_cache(maxsize=1)
     def get_all_questions(self) -> list[dict]:
-      #Reads file once and caches it
         with self.file_path.open("r", encoding="utf-8") as file:
             return json.load(file)
