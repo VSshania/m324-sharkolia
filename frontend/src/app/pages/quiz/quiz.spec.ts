@@ -9,6 +9,10 @@ const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const QUIZ_DATA: QuizData = {
   characters: ['magician', 'ogre'],
+  characterDescriptions: {
+    magician: 'You are a Magician.',
+    ogre: 'You are an Ogre.',
+  },
   genderQuestion: {
     id: 'gender',
     question: 'What gender do you identify as?',
@@ -73,5 +77,6 @@ describe('Quiz', () => {
 
     expect(component.step()).toBe('result');
     expect(component.resultCharacter()).toBe('magician');
+    expect(component.resultDescription()).toBe('You are a Magician.');
   });
 });

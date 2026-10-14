@@ -8,6 +8,10 @@ type Step = 'loading' | 'error' | 'gender' | 'question' | 'result';
 const CHARACTER_IMAGES: Record<string, Record<string, string>> = {
   magician: { female: 'wizard-f.png', male: 'wizard-m.png' },
   ogre: { female: 'ogre-f.png', male: 'ogre-m.png' },
+  jester: { female: 'jester-f.png', male: 'jester-m.png' },
+  knight: { female: 'knight-f.png', male: 'knight-m.png' },
+  hunter: { female: 'hunter-f.png', male: 'hunter-m.png' },
+  princess: { female: 'princess-f.png', male: 'princess-f.png' },
 };
 
 const TRANSITION_MS = 250;
@@ -37,9 +41,9 @@ export class Quiz implements OnInit {
   loadQuiz(): void {
     this.step.set('loading');
     this.quizService.getQuiz().subscribe({
-      next: (data) => {
+      next: data => {
         this.quizData.set(data);
-        this.scores = Object.fromEntries(data.characters.map((character) => [character, 0]));
+        this.scores = Object.fromEntries(data.characters.map(character => [character, 0]));
         this.currentQuestionIndex.set(0);
         this.step.set('gender');
       },
@@ -78,7 +82,7 @@ export class Quiz implements OnInit {
 
     this.transitionTo(() => {
       if (this.currentQuestionIndex() + 1 < this.totalQuestions) {
-        this.currentQuestionIndex.update((index) => index + 1);
+        this.currentQuestionIndex.update(index => index + 1);
       } else {
         this.resultCharacter.set(this.computeResultCharacter());
         this.step.set('result');
@@ -104,6 +108,11 @@ export class Quiz implements OnInit {
     return file ? `/characters/${file}` : null;
   }
 
+  resultDescription(): string | null {
+    const character = this.resultCharacter();
+    return character ? this.quizData()?.characterDescriptions[character] ?? null : null;
+  }
+
   restart(): void {
     this.gender = null;
     this.resultCharacter.set(null);
@@ -112,7 +121,7 @@ export class Quiz implements OnInit {
 
   private computeResultCharacter(): string {
     return Object.entries(this.scores).reduce((best, [character, points]) =>
-      points > best[1] ? [character, points] : best
+      points > best[1] ? [character, points] : best,
     )[0];
   }
 }
