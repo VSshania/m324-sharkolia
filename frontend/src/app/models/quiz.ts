@@ -12,6 +12,7 @@ export interface QuizQuestion {
 
 export interface QuizData {
   characters: string[];
+  characterDescriptions: Record<string, string>;
   genderQuestion: QuizQuestion;
   questions: QuizQuestion[];
 }

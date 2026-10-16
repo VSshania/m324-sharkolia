@@ -49,6 +49,9 @@
         <img class="result-image" [src]="image" alt="Your matching character" />
       }
       <h2 class="character-name">{{ resultCharacter() }}</h2>
+      @if (resultDescription(); as description) {
+        <p class="result-description">{{ description }}</p>
+      }
       <div class="result-actions">
         <button type="button" class="primary-button" (click)="restart()">Retake Quiz</button>
         <a routerLink="/" class="secondary-link">Back to home</a>
