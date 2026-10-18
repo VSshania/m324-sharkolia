@@ -64,3 +64,38 @@ h1 {
 .start-button:hover {
   background: #e070c4;
 }
+
+@media (max-width: 600px) {
+  .home {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .character {
+    width: 120px;
+    height: 120px;
+  }
+
+  .character:not(:last-child) {
+    display: none;
+  }
+
+  h1 {
+    font-size: 5rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .start-button {
+    margin-bottom: 20px;
+  }
+}
+
